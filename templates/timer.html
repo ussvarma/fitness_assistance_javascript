@@ -49,24 +49,9 @@
         clearInterval(x);
         // document.getElementById("rest").innerHTML = "Boom Boom"
        $( document ).ready(function() {
-          var socket = io();
-          socket.on('connect', function(){
-            socket.send("timer connected")
-            $("#resting").hide()
-            $("#img").show()
-            socket.emit(counter,"squats")
-          });
-          socket.on('disconnect', function(){
-            socket.send("timer disconnected")
-          });
-          socket.on('capture_2', function(data){
-            $("#img").attr("src",data.base_64)
-          });
-          socket.on('redirect', function (data) {
-             window.location.href=data.url
-            console.log(data.url)
-            });
-      })
+           console.log("entered")
+           location.replace(counter)
+       })
       }
     }, 1000);
     </script>

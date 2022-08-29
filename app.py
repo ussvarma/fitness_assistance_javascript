@@ -227,10 +227,27 @@ def capture():
     return render_template('face.html')
 
 
-@app.route('/biceps')
+@app.route('/light_biceps')
 def biceps():
-    return render_template('biceps.html')
+    return render_template('light_biceps.html')
 
+@app.route('/medium_lunges')
+def lunges():
+    return render_template('medium_lunges.html')
+
+@app.route('/heavy_short_head_biceps.html')
+def short_head_biceps():
+    return render_template('heavy_short_head_biceps.html')
+
+@app.route("/light_timer")
+def light():
+    print("light_timer")
+    msg = "Get ready for squats..!"
+    return render_template("timer.html", timer=5, counter="/light_squats", msg=msg)
+
+@app.route('/light_squats')
+def light_squats():
+    return render_template('light_squats.html')
 
 @app.route('/food_intake', methods=['POST', 'GET'])
 def food_intake():
@@ -389,21 +406,23 @@ def heavy_short_head_biceps(data):
 def heavy():
     print("light_timer")
     msg = "Get ready for pushups..!"
-    return render_template("timer.html", msg=msg, timer=5, counter="heavy_pushup")
+    return render_template("timer.html", msg=msg, timer=5, counter="/heavy_pushup")
+
+@app.route('/heavy_pushup')
+def heavy_pushup():
+    return render_template('heavy_pushup.html')
 
 
 @app.route("/medium_timer")
 def medium():
     print("light_timer")
     msg = "Get ready for pushups..!"
-    return render_template("timer.html", msg=msg, timer=5, counter="medium_pushup")
+    return render_template("timer.html", msg=msg, timer=5, counter="/medium_pushup")
 
+@app.route('/medium_pushup')
+def medium_pushup():
+    return render_template('medium_pushup.html')
 
-@app.route("/light_timer")
-def light():
-    print("light_timer")
-    msg = "Get ready for squats..!"
-    return render_template("timer.html", timer=5, counter="light_squat", msg=msg)
 
 
 @app.route("/thanks")
@@ -511,7 +530,7 @@ def medium_squat(data):
 
 
 @socketio.on('medium_pushup')
-def medium_pushup(data):
+def medium_pushups(data):
     print(data)
     context = zmq.Context()
     socket = context.socket(zmq.REQ)
@@ -558,7 +577,7 @@ def medium_pushup(data):
 
 
 @socketio.on('heavy_pushup')
-def heavy_pushup(data):
+def heavy_pushups(data):
     print(data)
     context = zmq.Context()
     socket = context.socket(zmq.REQ)
