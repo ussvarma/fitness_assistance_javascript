@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="static/Homepage.css">
@@ -83,7 +84,7 @@
 
         canvasCtx5.save();
         canvasCtx5.clearRect(0, 0, out5.width, out5.height);
-        if((left_ankle_visibility<0.5) || (right_ankle_visibility<0.5)){
+        if((left_ankle_visibility<0.3) || (right_ankle_visibility<0.3)){
            canvasCtx5.fillStyle = "red";
           canvasCtx5.font = "bold 30px Arial";
           canvasCtx5.drawImage(results.image, 0, 0, out5.width, out5.height);
@@ -101,7 +102,7 @@
             console.log(counter)
           }
 
-          if (counter==2){
+          if (counter==3){
             video5.srcObject.getTracks().forEach(a => a.stop());
             location.replace("/thanks")
           }
